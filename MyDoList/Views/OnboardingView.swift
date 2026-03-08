@@ -14,23 +14,15 @@ struct OnboardingView: View {
                 Spacer()
                     .frame(height: 40)
 
-                ZStack {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(
-                            LinearGradient(
-                                colors: [.blue, .cyan], startPoint: .topLeading,
-                                endPoint: .bottomTrailing)
-                        )
-                        .frame(width: 80, height: 80)
-                        .shadow(color: .blue.opacity(0.3), radius: 10, x: 0, y: 5)
+                Image("OnboardingIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 80, height: 80)
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+                    .padding(.bottom, 24)
 
-                    Image(systemName: "checkmark.list")
-                        .font(.system(size: 40, weight: .bold))
-                        .foregroundColor(.white)
-                }
-                .padding(.bottom, 24)
-
-                Text("Welcome to\nMyDoList")
+                Text("Welcome to\nTasca")
                     .font(.system(size: 40, weight: .heavy, design: .rounded))
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
@@ -81,7 +73,7 @@ struct OnboardingView: View {
                         .cornerRadius(16)
                         .padding(.horizontal, 32)
                 }
-                .padding(.bottom, 40)
+                .padding(.bottom, 60)
             }
             .tag(0)
 
@@ -153,14 +145,18 @@ struct OnboardingView: View {
                             .padding(.horizontal, 32)
                     }
                 }
-                .padding(.bottom, 40)
+                .padding(.bottom, 60)
             }
             .tag(1)
 
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
         .background(Color(.systemBackground).ignoresSafeArea())
+        .ignoresSafeArea(edges: .bottom)
+        .onAppear {
+            UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.label
+            UIPageControl.appearance().pageIndicatorTintColor = UIColor.systemGray3
+        }
     }
 }
 

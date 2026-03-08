@@ -79,7 +79,7 @@ struct SidebarView: View {
                 }
             }
         }
-        .navigationTitle("MyDoList")
+        .navigationTitle("Tasca")
         .navigationBarTitleDisplayMode(.large)
     }
 }

@@ -245,7 +245,7 @@ struct ExportDataView: View {
     private func exportData() {
         let timestamp = Date().formatted(date: .numeric, time: .omitted).replacingOccurrences(
             of: "/", with: "-")
-        let fileName = "MyDoList_Export_\(timestamp)"
+        let fileName = "Tasca_Export_\(timestamp)"
 
         switch exportFormat {
         case .csv:
@@ -296,7 +296,7 @@ struct ExportDataView: View {
     }
 
     private func createTextExport(fileName: String) -> URL? {
-        var textContent = "MyDoList Export\n"
+        var textContent = "Tasca Export\n"
         textContent += "Generated: \(Date().formatted(date: .complete, time: .complete))\n\n"
 
         for list in lists {
